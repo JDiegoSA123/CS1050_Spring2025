@@ -40,6 +40,8 @@ public class M02L06MathChars {
 	String firstName = "Diego";
 	
 	
+	Math.pow
+	
 	}
 
 }
