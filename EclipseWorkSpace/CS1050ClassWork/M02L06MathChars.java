@@ -35,12 +35,12 @@ public class M02L06MathChars {
 	System.out.println("enter a char");
 	char someChar = input.next().charAt(0);
 	
-	System.out.printf("A char was entered with ascii vaule %d \n", someChar);
+	System.out.printf("A char was entered with ascii vaule %d ", someChar);
 	
 	String firstName = "Diego";
 	
 	
-	Math.pow
+	
 	
 	}
 
