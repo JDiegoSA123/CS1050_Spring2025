@@ -1,4 +1,4 @@
-
+import java.util.Scanner;
 public class GE03FinalGradeCalculator 
 {
 	
@@ -10,12 +10,16 @@ public class GE03FinalGradeCalculator
 	 final int MAX = 105;
 	 final int MIN = 0;
 	 
-	 
-	 double classPart;
-	 double guideExp;
-	 double quiz;
-	 double project;
-	 double finalExam;
+	 System.out.println("Enter a grade for the Class Participation:");
+	 double classPart = getValidGrade(MAX, MIN);
+	 System.out.println("Enter a grade for the Guided Exploration:");
+	 double guideExp = getValidGrade(MAX, MIN);
+	 System.out.println("Enter a grade for the Module Quizzes:");
+	 double quiz = getValidGrade(MAX, MIN);
+	 System.out.println("Enter a grade for the Project Literations:");
+	 double project = getValidGrade(MAX, MIN);
+	 System.out.println("Enter a grade for the Final Exam:");
+	 double finalExam = getValidGrade(MAX, MIN);
 
 	 
 	 
@@ -58,8 +62,15 @@ public class GE03FinalGradeCalculator
 	
 	public static double getValidGrade(int MIN, int MAX) 
 	{
-		double grade = 0;
-		
+		double grade;
+		Scanner input = new Scanner(System.in);
+	
+		grade = input.nextInt();
+		while (MIN <= grade || grade <= MAX) 
+		{
+			System.out.println("Please enter a valid grade:");
+			grade = input.nextInt();
+		}
 		return grade;
 	}
 	
