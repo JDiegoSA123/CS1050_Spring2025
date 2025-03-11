@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class PracticeMethods 
 {
 
@@ -5,6 +7,7 @@ public class PracticeMethods
 	{
 	final int MAX = 5;
 	int maxsum = sum(MAX);
+	double gradef = getValidGrade(0,105);
 	
 	System.out.println("the sum is " + maxsum);
 	}// End of Main Method
@@ -19,7 +22,19 @@ public class PracticeMethods
 		return total;
 	}// End of sum Method 
 	
+	public static double getValidGrade(double MIN, double MAX) 
+	{
+		double grade;
+		Scanner input = new Scanner(System.in);
 	
+		grade = input.nextDouble();
+		while (grade >= MIN || grade <= MAX) 
+		{
+			System.out.println("Please enter a valid grade:");
+			grade = input.nextInt();
+		}
+		return grade;
+	} // End of getValidGrade
 
 }// End of Class
 

@@ -7,9 +7,14 @@ public class GE03FinalGradeCalculator
 		
 	 printInfo();		
 
-	 final int MAX = 105;
-	 final int MIN = 0;
-	 
+	 final double MAX = 105.00;
+	 final double MIN = 0.00;
+	 final double CLASS_PART = .10;
+	 final double GUIDE_EXP = .20;
+	 final double QUIZ = .25;
+	 final double PROJECT = .25;
+	 final double FINAL_EXAM = .20;
+
 	 System.out.println("Enter a grade for the Class Participation:");
 	 double classPart = getValidGrade(MAX, MIN);
 	 System.out.println("Enter a grade for the Guided Exploration:");
@@ -20,22 +25,25 @@ public class GE03FinalGradeCalculator
 	 double project = getValidGrade(MAX, MIN);
 	 System.out.println("Enter a grade for the Final Exam:");
 	 double finalExam = getValidGrade(MAX, MIN);
-
 	 
+	 double finalGrade = ((classPart * CLASS_PART) + (guideExp * GUIDE_EXP) + (quiz * QUIZ) + (project * PROJECT) + (finalExam * FINAL_EXAM));
 	 
+	 char finalLetterGrade = getLetterGrade(finalGrade);
 	 
+	 System.out.println("Your Final Grade is: " + finalGrade + " and a letter grade of: " + finalLetterGrade);
 	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
+	
 	 
 	}// End of main Method
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	public static void printInfo() 
 	{
@@ -60,13 +68,13 @@ public class GE03FinalGradeCalculator
 						  + "F: < 60\r\n");
 	}// End of printInfo Method
 	
-	public static double getValidGrade(int MIN, int MAX) 
+	public static double getValidGrade(double MIN, double MAX) 
 	{
 		double grade;
 		Scanner input = new Scanner(System.in);
 	
-		grade = input.nextInt();
-		while (MIN <= grade || grade <= MAX) 
+		grade = input.nextDouble();
+		while (grade >= MIN || grade <= MAX) 
 		{
 			System.out.println("Please enter a valid grade:");
 			grade = input.nextInt();
@@ -75,6 +83,34 @@ public class GE03FinalGradeCalculator
 	}
 	
 	
+	
+	public static char getLetterGrade(double finalGrade) 
+	{
+		char letterGrade;
+		
+		if (finalGrade >= 90) 
+		{
+			letterGrade = 'A';
+		}
+		else if (finalGrade >= 80 && finalGrade <= 89.99) 
+		{
+			letterGrade = 'B';
+		}
+		else if (finalGrade >= 70 && finalGrade <= 79.99) 
+		{
+			letterGrade = 'C';
+		}
+		else if (finalGrade >= 60 && finalGrade <= 69.99) 
+		{
+			letterGrade = 'D';
+		}
+		else 
+			letterGrade = 'F';
+		
+		return letterGrade;
+	} // End of getLetterGrade
+	
+
 	
 	
 	
