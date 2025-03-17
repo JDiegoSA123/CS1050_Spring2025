@@ -50,8 +50,15 @@ public class ArraysCode {
 		System.out.println("Update badNameVar2 = " + badNameVar2);
 		
 		// 5. Declare new array called randomNumbers 
-		
+		int[] randomNumbers = new int [10];
+		int random = randomNumbers.length;
 		// 6. Write Code to fill the array with random numbers from 1 to 10 
+		for (int i = 0; i < random; i++) 
+		{
+			randomNumbers[i] = (int) (Math.random() * 10);
+		}
+		
+		
 		
 		// 7. Write Code to find the index containing the smallest number in the randomNumbers array 
 		
@@ -62,7 +69,6 @@ public class ArraysCode {
 		
 		input.close();
 	} // main
-	
 
 	
 }// end class

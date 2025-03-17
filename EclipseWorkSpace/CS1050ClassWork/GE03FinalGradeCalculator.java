@@ -1,4 +1,7 @@
 import java.util.Scanner;
+/* 
+ 
+ */
 public class GE03FinalGradeCalculator 
 {
 	
@@ -7,43 +10,43 @@ public class GE03FinalGradeCalculator
 		
 	 printInfo();		
 
-	 final double MAX = 105.00;
-	 final double MIN = 0.00;
+	 final double MAX_GRADE = 105.00;
+	 final double MIN_GRADE = 0.00;
 	 final double CLASS_PART = .10;
 	 final double GUIDE_EXP = .20;
 	 final double QUIZ = .25;
 	 final double PROJECT = .25;
 	 final double FINAL_EXAM = .20;
-
-	 System.out.println("Enter a grade for the Class Participation:");
-	 double classPart = getValidGrade(MAX, MIN);
-	 System.out.println("Enter a grade for the Guided Exploration:");
-	 double guideExp = getValidGrade(MAX, MIN);
-	 System.out.println("Enter a grade for the Module Quizzes:");
-	 double quiz = getValidGrade(MAX, MIN);
-	 System.out.println("Enter a grade for the Project Literations:");
-	 double project = getValidGrade(MAX, MIN);
-	 System.out.println("Enter a grade for the Final Exam:");
-	 double finalExam = getValidGrade(MAX, MIN);
 	 
-	 double finalGrade = ((classPart * CLASS_PART) + (guideExp * GUIDE_EXP) + (quiz * QUIZ) + (project * PROJECT) + (finalExam * FINAL_EXAM));
-	 
-	 char finalLetterGrade = getLetterGrade(finalGrade);
-	 
-	 System.out.println("Your Final Grade is: " + finalGrade + " and a letter grade of: " + finalLetterGrade);
-	 
+	Scanner input = new Scanner(System.in);
+	Scanner input1 = new Scanner(System.in);
+	 String loop = "y";
+	 while (loop.charAt(0) == 'y')  
+	 {
+		 System.out.println("Enter a grade for the Class Participation:");
+		 double classPart = getValidGrade(MAX_GRADE, MIN_GRADE, input);
+		 System.out.println("Enter a grade for the Guided Exploration:");
+		 double guideExp = getValidGrade(MAX_GRADE, MIN_GRADE, input);
+		 System.out.println("Enter a grade for the Module Quizzes:");
+		 double quiz = getValidGrade(MAX_GRADE, MIN_GRADE, input);
+		 System.out.println("Enter a grade for the Project Literations:");
+		 double project = getValidGrade(MAX_GRADE, MIN_GRADE, input);
+		 System.out.println("Enter a grade for the Final Exam:");
+		 double finalExam = getValidGrade(MAX_GRADE, MIN_GRADE, input);
+		 
+		 double finalGrade = ((classPart * CLASS_PART) + (guideExp * GUIDE_EXP) + (quiz * QUIZ) + (project * PROJECT) + (finalExam * FINAL_EXAM));
+		 
+		 char finalLetterGrade = getLetterGrade(finalGrade);
+		 
+		 System.out.printf("Your Final Grade is: %f and a letter grade of: %c \r", finalGrade, finalLetterGrade);
+		 System.out.println("Do you want enter a different student's grades? Enter y for yes and n for no");
 	
-	 
+		 loop = input1.next();;
+	 }
+	 System.out.println("Exiting Grade Calculator");
+	 input.close();
+	 input1.close();
 	}// End of main Method
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	public static void printInfo() 
 	{
@@ -68,21 +71,17 @@ public class GE03FinalGradeCalculator
 						  + "F: < 60\r\n");
 	}// End of printInfo Method
 	
-	public static double getValidGrade(double MIN, double MAX) 
+	public static double getValidGrade(double MIN, double MAX, Scanner inputKeyboard) 
 	{
-		double grade;
-		Scanner input = new Scanner(System.in);
-	
-		grade = input.nextDouble();
-		while (grade >= MIN || grade <= MAX) 
+		double grade;	
+		grade = inputKeyboard.nextDouble();
+		while (grade > MIN || grade < MAX) 
 		{
 			System.out.println("Please enter a valid grade:");
-			grade = input.nextInt();
+			grade = inputKeyboard.nextDouble();
 		}
 		return grade;
 	}
-	
-	
 	
 	public static char getLetterGrade(double finalGrade) 
 	{
@@ -109,12 +108,4 @@ public class GE03FinalGradeCalculator
 		
 		return letterGrade;
 	} // End of getLetterGrade
-	
-
-	
-	
-	
-	
-
-	
 }// End of class

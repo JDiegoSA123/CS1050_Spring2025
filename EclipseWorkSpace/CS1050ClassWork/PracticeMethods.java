@@ -10,6 +10,21 @@ public class PracticeMethods
 	double gradef = getValidGrade(0,105);
 	
 	System.out.println("the sum is " + maxsum);
+	
+	int sumTotal = 0;
+	int i = 0;
+	do {
+		sumTotal = sumTotal + i;
+		i++;
+	} while (i < MAX );
+	System.out.println("sumTotal is: " + sumTotal);
+	
+	
+	
+	
+	
+	
+	
 	}// End of Main Method
 	
 	public static int sum(int MAX) 
