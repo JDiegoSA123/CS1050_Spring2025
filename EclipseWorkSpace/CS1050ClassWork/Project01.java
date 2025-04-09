@@ -1,9 +1,9 @@
 /**
- * 
- */
+Juan D Sanchez Acosta
+Deb Harding
+CS1050
 
-/**
- * 
+In this project, you will 
  */
 public class Project01 {
 

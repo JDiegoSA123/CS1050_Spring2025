@@ -4,10 +4,8 @@ import java.util.Scanner;
  */
 public class GE03FinalGradeCalculator 
 {
-	
 	public static void main(String[] args) 
 	{
-		
 	 printInfo();		
 
 	 final double MAX_GRADE = 105.00;

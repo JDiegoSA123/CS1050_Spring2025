@@ -1,0 +1,7 @@
+
+Categories and percentage weights
+Class Participation Grade: 0.12
+Guided Exploration Grade: 0.22
+Quizzes Grade: 0.22
+Project Percent Grade: 0.22
+Final Exam Grade: 0.22
