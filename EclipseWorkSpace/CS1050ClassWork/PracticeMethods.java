@@ -5,6 +5,16 @@ public class PracticeMethods
 
 	public static void main(String[] args) 
 	{
+	int num1 = 5;
+	int[][] array2D = new int [num1][num1];
+	for(int row = 0; row < num1; row++)
+	{
+		for(int col = 0;col < num1; col++)
+		{
+			array2D[row][col] = (row + 1) * ( col + 1);
+		}
+	}
+	
 	final int MAX = 5;
 	int maxsum = sum(MAX);
 	double gradef = getValidGrade(0,105);
@@ -18,6 +28,9 @@ public class PracticeMethods
 		i++;
 	} while (i < MAX );
 	System.out.println("sumTotal is: " + sumTotal);
+	
+	
+	
 	
 	
 	

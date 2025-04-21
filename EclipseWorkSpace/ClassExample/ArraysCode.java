@@ -10,7 +10,7 @@ public class ArraysCode {
 	{
 		// Examples of processing arrays
 		final int TOTAL_NUMBERS = 5;
-		// explain
+	
 		int[] numbers = new int[TOTAL_NUMBERS];
 		
 		//explain

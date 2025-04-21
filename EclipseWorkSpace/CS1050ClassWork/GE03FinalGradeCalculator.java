@@ -39,7 +39,7 @@ public class GE03FinalGradeCalculator
 		 System.out.printf("Your Final Grade is: %f and a letter grade of: %c \r", finalGrade, finalLetterGrade);
 		 System.out.println("Do you want enter a different student's grades? Enter y for yes and n for no");
 	
-		 loop = input1.next();;
+		 loop = input1.next();
 	 }
 	 System.out.println("Exiting Grade Calculator");
 	 input.close();

@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class ReadFileSimple {
     public static void main(String[] args) {
-        final String FILENAME = "tes.txt"; 
+        final String FILENAME = "test.txt"; 
 
         try {
             // Create a Scanner to read from the file
