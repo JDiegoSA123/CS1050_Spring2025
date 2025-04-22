@@ -22,46 +22,46 @@ public class Project01
 				+ "**************************************************\r\n"
 				+ "");
 	
-	int numOfAthletes;
-	Scanner input = new Scanner(System.in);
+	int numOfAthletes = 0;
+
 	Scanner inputCalories = new Scanner(System.in);
 	Scanner inputInt = new Scanner(System.in);
 	Scanner inputDouble = new Scanner(System.in);
 
-	System.out.println("Enter number of Athletes: ");
-	numOfAthletes = input.nextInt();
-	while(numOfAthletes <= 0 )
+
+	while(numOfAthletes <= 0)
 	{
-		System.out.println("Error: Value must be greater than 0");		
-		numOfAthletes = input.nextInt();
+		System.out.println("Enter number of Athletes: ");
+		numOfAthletes = getPositiveInt(inputInt);
+		if (numOfAthletes <= 0) 
+		{
+			System.out.println("Error: Value must be greater than 0.");
+			
+		}
 	}
 	
 	double[] averageDailyCaloriesBurned = new double[numOfAthletes];
 	double[] bmis = new double[numOfAthletes];
 	int[] maxHeartRate = new int[numOfAthletes];
-	double[] caloriesPerDay = new double [6];
+	double[] caloriesPerDay;
 	
-	int[] age = new int[numOfAthletes];
-	double[] height = new double[numOfAthletes];
-	double[] weight = new double[numOfAthletes];
-
 	for(int i = 0; i < numOfAthletes; i++)
 	{
 		System.out.println("Enter data for Athlete " + (i + 1) + ":");
 		
-		System.out.println("Enter athlete's weight (lbs): ");
-		weight[i] = getPositiveDouble(inputDouble);
-		System.out.println("Enter athlete's height (inches): ");
-		height[i] = getPositiveDouble(inputDouble);
-		System.out.println("Enter athlete's age: ");
-		age[i] = getPositiveInt(inputInt);
+		
+		bmis[i] = calculateBMI(inputDouble);
+	
+		maxHeartRate[i] = calculateMaxHeartRate(inputInt);
+		
 		caloriesPerDay = getDailyCalories(inputCalories);
 		
+		averageDailyCaloriesBurned[i] = calculateAverageCaloriesBurned(caloriesPerDay);
 	}
 	
+	displayAthleteSummary(averageDailyCaloriesBurned, bmis, maxHeartRate);
 	
-	
-	
+
 	
 	} // End of Main Method
 	
@@ -69,24 +69,16 @@ public class Project01
 	{
 		int intvalue = 0;	
 		intvalue = intInput.nextInt();
-		while (intvalue < 0) 
-		{
-			System.out.println("Please enter a valid grade:");
-			intvalue = intInput.nextInt();
-		}
+	
 		return intvalue;
 	}
 	
 	public static double getPositiveDouble(Scanner doubleInput)
 	{
-		double doublesvalue = 0;	
-		doublesvalue = doubleInput.nextDouble();
-		while (doublesvalue < 0) 
-		{
-			System.out.println("Please enter a valid grade:");
-			doublesvalue = doubleInput.nextDouble();
-		}
-		return doublesvalue;
+		double doubleValue = 0;	
+		doubleValue = doubleInput.nextDouble();
+		
+		return doubleValue;
 	}
 	
 	public static void findUnderweightAthlete(double[] bmis)
@@ -100,7 +92,7 @@ public class Project01
 		}
 	} // End of findUnderweightAthlete
 	
-	public static int findTopAthleteIndex(int[] array) 
+	public static int findTopAthleteIndex(double[] array) 
 	{
 		
 	int largestIndex = 0;
@@ -142,27 +134,63 @@ public class Project01
 		return category;
 	} // End of getBMICategory
 	
-	public static double calculateBMI(double height, double weight)
+	public static double calculateBMI(Scanner inputDouble)
 	{
 		double bmi;
+		double height = 0;
+		double weight = 0;
 		
+		while(weight <= 0)
+		{
+			System.out.println("Enter athlete's weight (lbs): ");
+			weight = getPositiveDouble(inputDouble);
+			if(weight <= 0)
+			{
+				System.out.println("Error: Value must be greater than 0.");
+			}
+		}
+		
+		while(height <= 0)
+		{
+			System.out.println("Enter athlete's height (inches): ");
+			height = getPositiveDouble(inputDouble);
+			if (height <= 0) 
+			{
+				System.out.println("Error: Value must be greater than 0.");
+				
+			}
+		}
 		bmi = weight * 703 / (height * height);
 		return bmi;
 	} // End of getBMI
 	
-	public static double calculateMaxHeartRate(int age)
+	public static int calculateMaxHeartRate(Scanner inputInt)
 	{
-		double maxHeartRate = 220 - age;
+		int age = 0;
+		
+		while(age <= 0)
+		{
+			System.out.println("Enter athlete's age: ");
+			age = getPositiveInt(inputInt);
+			if (age <= 0) 
+			{
+				System.out.println("Error: Value must be greater than 0.");
+				
+			}
+		}
+		int maxHeartRate = 220 - age;
 		return maxHeartRate;
 	} // End of calculateMaxHeartRate
 	
 	public static double[] getDailyCalories(Scanner scanKeyboard)
 	{
-		double[] dailyCalories = new double[6];
+		double[] dailyCalories = new double[7];
 		
 		for (int i = 0; i < dailyCalories.length; i++)
 		{
+			System.out.println("Enter calories burned on day " + (i + 1) + ":");
 			dailyCalories[i] = getPositiveInt(scanKeyboard);
+			
 		}
 		return dailyCalories;
 	} // End of getDailyCalories
@@ -179,7 +207,26 @@ public class Project01
 	public static void displayAthleteSummary(double[] averageCalories, double[] bmis, int[] heartRates)
 	{
 		System.out.println("***** Gym Weekly Fitness Summary *****");
+		for(int i = 0; i < bmis.length; i++)
+		{
+			System.out.println("Athlete "+ (i + 1) + "\n"
+					+ "	Max Heart Rate: "+ heartRates[i] + "\n"
+					+ "	Average Daily Calories Burned: " + averageCalories[i] + "\n"
+					+ "	BMI: " +  bmis[i] + "	Category " + getBMICategory(bmis));
+		}
 		
+		System.out.println("Top Athlete (Most Average Daily Calories Burned): " + "Athlete " + findTopAthleteIndex(averageCalories));
+		
+		
+		System.out.println(" Underweight athletes: ");
+		findUnderweightAthlete(bmis);
+		for (int i = 0; i < bmis.length; i++)
+		{
+		if(bmis[i] < 18.5)
+		{
+			System.out.println("Underweight Athletes: No underweight athletes");
+		}
+		}
 	} // End of displayAtheletsSummary
 	
 } // End of class
