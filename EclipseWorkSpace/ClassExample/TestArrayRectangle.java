@@ -173,7 +173,7 @@ class RectangleL23 {
 		return this.length;
 	}
 
-	/** Return Woidth */
+	/** Return Width */
 	public double getWidth() {
 		return this.width;
 	}

@@ -1,66 +1,29 @@
-/*
+/**
  * 
-Juan D Sanchez Acosta
-CS 1050
-Deb Hardling
-Spring 2025
-Description:
-
-	Hello, the code's purpose is to
- 
  */
 
 import java.util.Scanner;
-public class Project01 
+
+/**
+ * 
+ */
+public class ProjectIteration02 
 {
 
 	public static void main(String[] args) 
 	{
-
-	System.out.println("**************************************************\r\n"
-				+ "*    Welcome to the Gym Athlete Fitness Tracker  *\r\n"
-				+ "**************************************************\r\n"
-				+ "");
-	
-	int numOfAthletes = 0;
-
-	Scanner inputCalories = new Scanner(System.in);
-	Scanner inputInt = new Scanner(System.in);
-	Scanner inputDouble = new Scanner(System.in);
-
-
-	while(numOfAthletes <= 0)
-	{
-		System.out.println("Enter number of Athletes: ");
-		numOfAthletes = getPositiveInt(inputInt);
-		if (numOfAthletes <= 0) 
-		{
-			System.out.println("Error: Value must be greater than 0.");	
-		}
-	}
-	
-	double[] averageDailyCaloriesBurned = new double[numOfAthletes];
-	double[] bmis = new double[numOfAthletes];
-	int[] maxHeartRate = new int[numOfAthletes];
-	double[] caloriesPerDay;
-	
-	for(int i = 0; i < numOfAthletes; i++)
-	{
-		System.out.println("Enter data for Athlete " + (i + 1) + ":");
+	int[] athlete1Calories = {100, 200, 300, 400, 500, 600, 700};
+	Athlete[] athlete1 = new Athlete ["Diego", "Sanchez", 150, 68, 21, athlete1Calories];
 		
 		
-		bmis[i] = calculateBMI(inputDouble);
-	
-		maxHeartRate[i] = calculateMaxHeartRate(inputInt);
 		
-		caloriesPerDay = getDailyCalories(inputCalories);
 		
-		averageDailyCaloriesBurned[i] = calculateAverageCaloriesBurned(caloriesPerDay);
-	}
+	}//End of Main Method
 	
-	displayAthleteSummary(averageDailyCaloriesBurned, bmis, maxHeartRate);
 	
-	} // End of Main Method
+	
+	
+	
 	
 	public static int getPositiveInt(Scanner intInput)
 	{
@@ -219,4 +182,86 @@ public class Project01
 			}
 		}
 	} // End of displayAtheletsSummary
-} // End of class
+}// End of Class
+
+class Athlete
+{
+	private String firstName;
+	private String lastName;
+	private double height;
+	private double weight;
+	private int age;
+	private double[] dailyCaloriesBurned;
+
+	public Athlete(String firstName, String lastName, double weight,
+		double height, int age, double[] dailyCaloriesBurned)
+	{
+	this.firstName = firstName;
+	this.lastName = lastName;
+	this.height = height;
+	this.weight = weight;
+	this.age = age;
+	this.dailyCaloriesBurned = dailyCaloriesBurned;
+	}// End of Athlete Method
+	
+	public String getFirstName() 
+	{
+		return firstName;
+	}
+	
+	public String getLastName()
+	{
+		return lastName;
+	}
+	
+	public double calculateBMI()
+	{
+		bmi = weight * 703 / (height * height);
+		return bmi;
+	}
+	
+	public int calculateMaxHeartRate()
+	{
+		int maxHeartRate = 220 - age;
+		return maxHeartRate;
+	}
+	
+	public String getBMICategory()
+	{
+		String category;
+		int i = 0;
+		
+		if (BMI >= 30.1) 
+		{
+			category = "Obese";
+		}
+		else if (BMI >= 25.1 && BMI <= 30) 
+		{
+			category = "Overweight";
+		}
+		else if (BMI >= 18.5 && BMI <= 25) 
+		{
+			category = "Normal";
+		}
+		else  
+			category = "Underweight";
+		
+		return category;
+	}
+	
+	public double getAverageCaloriesBurned()
+	{
+		
+	}// End of getAverageCaloriesBurned
+}// End of Athlete Class
+
+
+
+
+
+
+
+
+
+
+
