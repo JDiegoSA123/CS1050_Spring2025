@@ -1,187 +1,52 @@
 /**
  * 
  */
-
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.Scanner;
 
-/**
- * 
- */
 public class ProjectIteration02 
 {
-
 	public static void main(String[] args) 
 	{
-	int[] athlete1Calories = {100, 200, 300, 400, 500, 600, 700};
-	Athlete[] athlete1 = new Athlete ["Diego", "Sanchez", 150, 68, 21, athlete1Calories];
+	double[] athlete1Calories = {100, 200, 300, 400, 500, 600, 700};
+	Athlete athlete1 = new Athlete("Diego", "Sanchez", 150, 68, 21, athlete1Calories);
+	
+	final int MAX_GYM_MEMBERS = 3;
+	
+	Gym gym1 = new Gym("Elite Fitness", MAX_GYM_MEMBERS);
+
+	try
+	{
+		readGymAthletesInfoFromFile("gym1.txt", gym1);
+		gym1.displayAthleteSummaries();
+		gym1.saveReportToFile();
 		
+	} catch (FileNotFoundException e)
+	{
+		System.out.println("Error: File not found.");
+	}
+	
+	Gym gym2 = new Gym("Work in Progress", MAX_GYM_MEMBERS);
+
+	try
+	{
+		readGymAthletesInfoFromFile("gym2.txt", gym2);
+		gym2.displayAthleteSummaries();
+		gym2.saveReportToFile();
 		
+	} catch (FileNotFoundException e)
+	{
+		System.out.println("Error: File not found.");
+	}
 		
-		
+	
+	
+	
 	}//End of Main Method
 	
 	
-	
-	
-	
-	
-	public static int getPositiveInt(Scanner intInput)
-	{
-		int intvalue = 0;	
-		intvalue = intInput.nextInt();
-	
-		return intvalue;
-	}
-	
-	public static double getPositiveDouble(Scanner doubleInput)
-	{
-		double doubleValue = 0;	
-		doubleValue = doubleInput.nextDouble();
-		
-		return doubleValue;
-	}
-	
-	public static void findUnderweightAthlete(double[] bmis)
-	{
-		for(int i = 1; i < bmis.length; i++)
-		{
-			if (bmis[i] < 18.5)
-			{
-				System.out.println("Athlete " + (i + 1));
-			}
-		}
-	} // End of findUnderweightAthlete
-	
-	public static int findTopAthleteIndex(double[] array) 
-	{
-		
-	int largestIndex = 0;
-	
-	for (int i = 1; i < array.length; i++)
-	{
-		if (array[i] > array[largestIndex]) 
-		{
-			largestIndex = i;
-		} // end of if
-	} //end of loop	
-	
-		return largestIndex;
-	} // end of findTopAthlete method
-	
-	public static String getBMICategory(double[] BMI) 
-	{
-		String category;
-		int i = 0;
-		
-		if (BMI[i] >= 30.1) 
-		{
-			category = "Obese";
-		}
-		else if (BMI[i] >= 25.1 && BMI[i] <= 30) 
-		{
-			category = "Overweight";
-		}
-		else if (BMI[i] >= 18.5 && BMI[i] <= 25) 
-		{
-			category = "Normal";
-		}
-		else  
-			category = "Underweight";
-		
-		return category;
-	} // End of getBMICategory
-	
-	public static double calculateBMI(Scanner inputDouble)
-	{
-		double bmi;
-		double height = 0;
-		double weight = 0;
-		
-		while(weight <= 0)
-		{
-			System.out.println("Enter athlete's weight (lbs): ");
-			weight = getPositiveDouble(inputDouble);
-			if(weight <= 0)
-			{
-				System.out.println("Error: Value must be greater than 0.");
-			}
-		}
-		
-		while(height <= 0)
-		{
-			System.out.println("Enter athlete's height (inches): ");
-			height = getPositiveDouble(inputDouble);
-			if (height <= 0) 
-			{
-				System.out.println("Error: Value must be greater than 0.");
-			}
-		}
-		bmi = weight * 703 / (height * height);
-		return bmi;
-	} // End of getBMI
-	
-	public static int calculateMaxHeartRate(Scanner inputInt)
-	{
-		int age = 0;
-		
-		while(age <= 0)
-		{
-			System.out.println("Enter athlete's age: ");
-			age = getPositiveInt(inputInt);
-			if (age <= 0) 
-			{
-				System.out.println("Error: Value must be greater than 0.");
-			}
-		}
-		int maxHeartRate = 220 - age;
-		return maxHeartRate;
-	} // End of calculateMaxHeartRate
-	
-	public static double[] getDailyCalories(Scanner scanKeyboard)
-	{
-		double[] dailyCalories = new double[7];
-		
-		for (int i = 0; i < dailyCalories.length; i++)
-		{
-			System.out.println("Enter calories burned on day " + (i + 1) + ":");
-			dailyCalories[i] = getPositiveInt(scanKeyboard);
-			
-		}
-		return dailyCalories;
-	} // End of getDailyCalories
-	
-	public static double calculateAverageCaloriesBurned(double[] currentDailyCalories)
-	{
-		double avgCalorie = ((currentDailyCalories[0]) + (currentDailyCalories[1]) + 
-				(currentDailyCalories[2]) + (currentDailyCalories[3]) + (currentDailyCalories[4]) +
-				(currentDailyCalories[5]) + (currentDailyCalories[6]) / 5.0);
-
-		return avgCalorie;
-	} // End of calculateAverageCaloriesBurned
-	
-	public static void displayAthleteSummary(double[] averageCalories, double[] bmis, int[] heartRates)
-	{
-		System.out.println("***** Gym Weekly Fitness Summary *****");
-		for(int i = 0; i < bmis.length; i++)
-		{
-			System.out.println("Athlete "+ (i + 1) + "\n"
-					+ "	Max Heart Rate: "+ heartRates[i] + "\n"
-					+ "	Average Daily Calories Burned: " + averageCalories[i] + "\n"
-					+ "	BMI:" +  bmis[i] + "	Category " + getBMICategory(bmis));
-		}
-		
-		System.out.println("Top Athlete (Most Average Daily Calories Burned): " + "Athlete " + findTopAthleteIndex(averageCalories));
-		
-		System.out.println(" Underweight athletes: ");
-		findUnderweightAthlete(bmis);
-		for (int i = 0; i < bmis.length; i++)
-		{
-			if(bmis[i] > 18.5)
-			{
-			System.out.println("Underweight Athletes: No underweight athletes");
-			}
-		}
-	} // End of displayAtheletsSummary
 }// End of Class
 
 class Athlete
@@ -192,6 +57,7 @@ class Athlete
 	private double weight;
 	private int age;
 	private double[] dailyCaloriesBurned;
+	private double bmi;
 
 	public Athlete(String firstName, String lastName, double weight,
 		double height, int age, double[] dailyCaloriesBurned)
@@ -229,17 +95,16 @@ class Athlete
 	public String getBMICategory()
 	{
 		String category;
-		int i = 0;
 		
-		if (BMI >= 30.1) 
+		if (bmi >= 30.1) 
 		{
 			category = "Obese";
 		}
-		else if (BMI >= 25.1 && BMI <= 30) 
+		else if (bmi >= 25.1 && bmi <= 30) 
 		{
 			category = "Overweight";
 		}
-		else if (BMI >= 18.5 && BMI <= 25) 
+		else if (bmi >= 18.5 && bmi <= 25) 
 		{
 			category = "Normal";
 		}
@@ -251,11 +116,139 @@ class Athlete
 	
 	public double getAverageCaloriesBurned()
 	{
-		
+		double avgCalories = 0;
+		for(int i = 0; i > dailyCaloriesBurned.length; i++)
+		{
+			avgCalories += dailyCaloriesBurned[i];
+		}
+		return avgCalories;
 	}// End of getAverageCaloriesBurned
+	
+	public static void readGymAthletesInfoFromFile(String filename, Gym currentGym) throws FileNotFoundException
+	{
+		
+		
+		Scanner fileScanner = null;
+		try
+		{
+
+			fileScanner = new Scanner(new File(filename));
+
+			final String FILENAME = "gym1.txt"; 
+
+	        	File testFile = new File(FILENAME);
+	         
+
+	            while (fileScanner.hasNextLine()) {
+	                String line = fileScanner.nextLine();
+	                System.out.println(line);
+	            }
+
+	            fileScanner.close();
+	    }
+		catch (FileNotFoundException e) 
+			{
+	            System.out.println("Error: Could not open file: " + e.getMessage());
+	        }
+
+
+		finally
+		{
+			if (fileScanner != null)
+			{
+				fileScanner.close();
+			}
+		}
+	}// end add athletes
+
+
+
 }// End of Athlete Class
 
+class Gym
+{
+private String name;
+private Athlete[] athletes;
+private int numAthletes;
 
+	public Gym(String name, int numAthletes)
+	{
+		this.name = name;
+		this.numAthletes = numAthletes;
+	}// End of Gym Method
+
+	public void addAthlete(Athlete athlete)
+	{
+	
+	}// End of addAthlete Method
+
+	public void displayAthleteSummary()
+	{
+	
+	}// End of displayAthleteSummary Method
+
+	public void saveReportToFile()
+	{
+	
+	}// End of saveReportToFile Method
+
+	public int findTopAthlete()
+	{
+		int largestIndex = 0;
+		
+		for (int i = 1; i < athletes.length; i++)
+		{
+			if (athletes[i] > athletes[largestIndex]) 
+			{
+				largestIndex = i;
+			}
+		}
+			return largestIndex;
+	}// End of findTopAthlete
+
+	public void displayUnderweightAthletes()
+	{
+		
+	}// End of displayUnderweightAthletes Method
+	
+	public static void readGymAthletesInfoFromFile(String filename, Gym currentGym) throws FileNotFoundException
+	{
+		
+		
+		Scanner fileScanner = null;
+		try
+		{
+
+			fileScanner = new Scanner(new File(filename));
+
+			final String FILENAME = "gym1.txt"; 
+
+	        	File testFile = new File(FILENAME);
+	         
+
+	            while (fileScanner.hasNextLine()) {
+	                String line = fileScanner.nextLine();
+	                System.out.println(line);
+	            }
+
+	            fileScanner.close();
+	    }
+		catch (FileNotFoundException e) 
+			{
+	            System.out.println("Error: Could not open file: " + e.getMessage());
+	        }
+
+
+		finally
+		{
+			if (fileScanner != null)
+			{
+				fileScanner.close();
+			}
+		}
+	}// end add athletes
+
+}// End of Gym Class
 
 
 

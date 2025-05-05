@@ -5,12 +5,15 @@ public class TestShapesInheritance
 	public static void main(String[] args) {
 		CircleFromSimpleGeometricShape circle = 
 				new CircleFromSimpleGeometricShape(1);
+		
+		
 		System.out.println("circle toString: " + circle.toString());
 		System.out.println("The color is " + circle.getColor());
 		System.out.printf("The radius is  %.2f \n", circle.getRadius());
 		System.out.printf("The area is  %.2f \n", circle.getArea());
 		System.out.printf("The diameter is  %.2f \n", circle.getDiameter());
-	}//end main
+		
+}//end main
 
 }//end TestShapeInheritance Class
 
@@ -83,7 +86,11 @@ class SimpleGeometricShape {
 	public java.util.Date getDateCreated() {
 		return dateCreated;
 	}
-
+	public String toString() 
+	{
+		System.out.println("In simpleGeometricShape toString: ");
+		return "created ";
+	}
 }//end SimpleGeometricShape class
 
 
