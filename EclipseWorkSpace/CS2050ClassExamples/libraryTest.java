@@ -1,10 +1,9 @@
 public class libraryTest 
 {
-
 	public static void main(String[] args) 
 	{
 		
-	Book book1 = new Book("BookA ", "Diego ", 1997);
+	Book book1 = new Book("Book A ", "Diego ", 1997);
 	
 	System.out.print(book1.getName());
 	System.out.print(book1.getAuthor());
@@ -38,3 +37,18 @@ class Book
 		return year;
 	}
 } // End of Book Class
+
+class Library
+{
+	private String name;
+	private int numberOfShelves;
+	private int shelfCapacity;
+	private int totalBookCapacity;
+	private int bookShelf[][];
+	
+	
+	
+	
+	
+	
+}
