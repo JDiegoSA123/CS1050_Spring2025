@@ -107,6 +107,15 @@ abstract class Book
 	{
 		return name + author + year;
 	}
+	/** Calculates the late fee based on subclass policy. */
+	public final double calculateLateFee(int daysLate){
+		double lateFee = 0;
+		if (daysLate > 0){
+			lateFee = daysLate * getDailyLateFee();
+		}
+		return lateFee;
+	}
+
 	public abstract int getLoanDays();
 	
 	public abstract double getDailyLateFee();
