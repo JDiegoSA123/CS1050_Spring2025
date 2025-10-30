@@ -116,12 +116,10 @@ abstract class Book
 		return lateFee;
 	}
 
-	public abstract int getLoanDays();
-	
-	public abstract double getDailyLateFee();
+
 	
 } // End of Book Class
-class PrintBook extends Book 
+/*class PrintBook extends Book 
 {
 	public PrintBook(String name, String author, int year)
 	{
@@ -158,7 +156,8 @@ class EBook extends Book
 	{
 		return .10;
 	}
-}
+}*/
+
 class Library
 {
 	private String name;
