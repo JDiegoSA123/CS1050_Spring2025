@@ -8,8 +8,8 @@ public class TestShapesInheritance
 {
 
 	public static void main(String[] args) {
-		CircleFromSimpleGeometricShape circle = 
-				new CircleFromSimpleGeometricShape(1);
+	CircleFromSimpleGeometricShape circle = new CircleFromSimpleGeometricShape(1);
+		
 		System.out.println("circle toString: " + circle.toString());
 		System.out.println("The color is " + circle.getColor());
 		System.out.printf("The radius is  %.2f \n", circle.getRadius());

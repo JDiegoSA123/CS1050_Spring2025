@@ -11,19 +11,18 @@ public class libraryTest
 		//System.out.println(nullBook.getName());
 		
 		Scanner input = new Scanner(System.in);
-		System.out.print("Enter the year");
-		int year = input.nextInt();
 		
 		
 		
-		/*System.out.println("Unit Test Book Class");
+		
+		System.out.println("Unit Test Book Class");
 		Book unitTestBook = new EBook("Unmasking AI", "Joy Buolamwini", 2023);
 		System.out.println("getTitle():   " + unitTestBook.getName());
 		System.out.println("getAuthor():  " + unitTestBook.getAuthor());
 		System.out.println("getYear():    " + unitTestBook.getYear());
 		System.out.println("stringOfBookDetails():   " + unitTestBook.toString());
 		System.out.println();
-		System.out.println("Setting up Test Library");    */
+		System.out.println("Setting up Test Library");    
 		int numberOfShelves = 3;
 		int shelfCapacity = 4;
 		
@@ -32,14 +31,13 @@ public class libraryTest
 		Library library = new Library("Test Library", numberOfShelves, shelfCapacity);
 		System.out.println("Loading books from file: library_books.csv");
 		LibraryLoader.loadFromCsv(library, "library_books.csv");
-	/*	library.displayCountPerShelf();
+		library.displayCountPerShelf();
 		library.printAllBooks();
 		library.displayOldest();
 		System.out.println("Shelves (rows): " + numberOfShelves);
 		System.out.println("Slots per shelf (columns): " + shelfCapacity);
 		System.out.println("Total capacity: " + (numberOfShelves * shelfCapacity));
 		System.out.println();
-		Library library = new Library("Test Library", numberOfShelves, shelfCapacity);
 		library.displayCountPerShelf();
 		library.printAllBooks();
 		library.displayOldest();
@@ -70,7 +68,7 @@ public class libraryTest
 		library.addBook(new EBook("Extra Title", "Extra Author", 2024)); // should trigger "full" message
 		library.displayCountPerShelf();
 		library.printAllBooks();
-		library.displayOldest();   */
+		library.displayOldest();   
 		
 		input.close();
 	} // End of Main Method
@@ -119,7 +117,7 @@ abstract class Book
 
 	
 } // End of Book Class
-/*class PrintBook extends Book 
+class PrintBook extends Book 
 {
 	public PrintBook(String name, String author, int year)
 	{
@@ -156,7 +154,7 @@ class EBook extends Book
 	{
 		return .10;
 	}
-}*/
+}
 
 class Library
 {

@@ -17,6 +17,7 @@ public class StackTest {
         stack.push(10);
         stack.push(20);
         stack.push(30);
+
         
 
         System.out.println("Stack after pushing: " + stack);

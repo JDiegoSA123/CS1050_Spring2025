@@ -139,14 +139,37 @@ class CustomerQueue
 	{
 		queue = new ArrayList<>();
 	}
-	public void enqueue(Customer c)
+	public void enqueue(Customer customer)
 	{
-		queue.push(c);
+		queue.add(customer);
 	}
 	public Customer dequeue()
 	{
-		return ;
+		if(!queue.isEmpty())
+		{
+			return queue.remove(0);
+		}
+		throw new IllegalStateException("Queue is empty");
 	}
-	
+	public Customer peek()
+	{
+		 if (this.isEmpty()) {
+	            throw new NoSuchElementException("Queue is empty.");
+	        }
+		return queue.get(queue.size() - 1);
+	}
+	public boolean isEmpty()
+	{
+		return this.queue.isEmpty();
+	}
+	public void displayQueue()
+	{
+		for(int i = 0; i < queue.size(); i++)
+		{
+
+		System.out.println("");
+		
+		}
+	}
 }
 
